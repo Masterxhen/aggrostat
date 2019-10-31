@@ -1,37 +1,47 @@
-// // db configuration
-// const firebase = require('firebase/app');
-// require('firebase/firestore')
+// db conf
+var admin = require("firebase-admin");
 
-// const firebaseConfig = {
-//   apiKey: "AIzaSyB9yigsAO4xOW8yjT-MpxybPr1uVqSV-qo",
-//   authDomain: "agrostat-c15e0.firebaseapp.com",
-//   databaseURL: "https://agrostat-c15e0.firebaseio.com",
-//   projectId: "agrostat-c15e0",
-//   storageBucket: "agrostat-c15e0.appspot.com",
-//   messagingSenderId: "931320071862",
-//   appId: "1:931320071862:web:e054d9a6d00c205cfa4817"
-// };
-// // Initialize Firebase
-// firebase.initializeApp(firebaseConfig);
-// const db = firebase.firestore()
+var serviceAccount = require("./agrostat-c15e0-firebase-adminsdk-rkn9e-1a35202628.json");
 
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+  databaseURL: "https://agrostat-c15e0.firebaseio.com"
+});
+const db = admin.firestore()
 // express config
 const express = require('express');
 const app = express();
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const port = 20000;
+const port = 3000;
 
-app.use(bodyParser.json())
-app.use(cors);
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(cors());
 
-app.get('/gg', (req, res) => {
+app.get('/', (req, res) => {
   console.log('Hi Joemar');
   res.send('Hi Joemar')
 })
 
+app.post('/api/remote', (req,res) => {
+  console.log(req.body)
+  // db.collection('reading').add(req.body);
+  db.collection('reading').doc('ggwp').set({status: parseInt(req.body.status),
+    station: 'A',
+    anaV: parseInt(req.body.anaV),
+    perV: parseInt(req.body.perV),
+    humV: parseInt(req.body.humV),
+    Temperature: parseInt(req.body.Temperature),
+    HeatInC: parseInt(req.body.HeatInC),
+    HeatInF: parseInt(req.body.HeatInF) })
+
+  res.status(200).send('Gwapo ka kapatid!');
+})
+
 app.post('/', (req, res) => {
   console.log('Hi Joemar');
+  res.send('nicesuu');
 })
 
 app.listen(port, () => console.log(`Server Running at port ${port}`));

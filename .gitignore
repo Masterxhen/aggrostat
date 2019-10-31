@@ -10,6 +10,7 @@ node_modules
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+server/agrostat-c15e0-firebase-adminsdk-rkn9e-1a35202628.json
 
 # Editor directories and files
 .idea

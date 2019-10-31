@@ -6,7 +6,7 @@
         <p class="text-body1">Test Your Soil to Calculate</p>
       </div>
       <div class="col-xs-12  q-mb-xl">
-        <q-btn justify-center color="secondary" label="Start" />
+        <q-btn justify-center @click="$router.push('/plant')" color="secondary" label="Start" />
       </div>
       <div class="col-xs-12">
         <p class="text-body1">Weather Today</p>
@@ -18,7 +18,7 @@
           language="en"
           units="uk">
         </weather>
-        <p>Your location data is {{ lat }}, {{ long }}</p>
+        <!-- <p>Your location data is {{ lat }}, {{ long }}</p> -->
       </div>
       <!-- <div class="col-xs-12 col-md-4">
         <p class="text-body1">Weather Forecast</p>

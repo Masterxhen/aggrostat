@@ -4,11 +4,11 @@ const routes = [
     path: '',
     component: () => import('layouts/MyLayout.vue'),
     children: [
-      { path: '/', name: 'Login', component: () => import('pages/Login.vue') },
-      { path: '/home', name: 'Home', component: () => import('pages/Index.vue') },
-      { path: '/plant', name: 'Plant', component: () => import('pages/Plant.vue') },
-      { path: '/result', name: 'Result', component: () => import('pages/Result.vue') },
-      { path: '/settings', name: 'Settings', component: () => import('pages/Settings.vue') }
+      { path: '/', name: 'Login', component: () => import('pages/Login.vue'), meta: { requiresAuth: false } },
+      { path: '/home', name: 'Home', component: () => import('pages/Index.vue'), meta: { requiresAuth: true } },
+      { path: '/plant', name: 'Plant', component: () => import('pages/Plant.vue'), meta: { requiresAuth: true } },
+      { path: '/almanac', name: 'Almanac', component: () => import('pages/Almanac.vue'), meta: { requiresAuth: true } },
+      { path: '/settings', name: 'Settings', component: () => import('pages/Settings.vue'),meta: { requiresAuth: true } }
     ]
   }
 ]

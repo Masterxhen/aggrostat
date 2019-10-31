@@ -59,15 +59,25 @@ module.exports = function (ctx) {
         'QItemSection',
         'QItemLabel',
         'QCard',
-        'QCardSection'
+        'QCardSection',
+        'QCardActions',
+        'QBtnDropdown',
+        'QAvatar',
+        'QPageSticky',
+        'QDialog',
+        'QInput',
+        'QSelect'
       ],
 
       directives: [
-        'Ripple'
+        'Ripple',
+        'ClosePopup'
       ],
 
       // Quasar plugins
-      plugins: []
+      plugins: [
+        'Notify'
+      ]
     },
 
     // https://quasar.dev/quasar-cli/cli-documentation/supporting-ie
@@ -148,13 +158,13 @@ module.exports = function (ctx) {
 
     // https://quasar.dev/quasar-cli/developing-cordova-apps/configuring-cordova
     cordova: {
-      // id: 'com.jkljt.agrostat',
+      id: 'com.jkljt.agrostat',
       // noIosLegacyBuildFlag: true, // uncomment only if you know what you are doing
     },
 
     // https://quasar.dev/quasar-cli/developing-electron-apps/configuring-electron
     electron: {
-      // bundler: 'builder', // or 'packager'
+      bundler: 'builder', // or 'packager'
 
       extendWebpack (cfg) {
         // do something with Electron main process Webpack cfg
@@ -177,7 +187,7 @@ module.exports = function (ctx) {
       builder: {
         // https://www.electron.build/configuration/configuration
 
-        // appId: 'agrostat'
+        appId: 'agrostat'
       }
     }
   }
