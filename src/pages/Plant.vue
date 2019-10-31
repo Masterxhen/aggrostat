@@ -6,7 +6,7 @@
         <p class="text-body1">Tracking</p>
         <area-chart :data="{'2017-05-13': 2, '2017-05-14': 5, '2017-05-15': 20, '2017-05-16': 21}"></area-chart>
       </div> -->
-      {{suggestions}}
+      <!-- {{suggestions}} -->
       <div class="col-xs-12 q-pa-md">
         <p class="text-body1">Your Soil</p>
         <pie-chart suffix="%" :data="{'Clay': 50, 'Sand': 10, 'Loam': 40}"></pie-chart>
